@@ -8,19 +8,18 @@ div {
 
 .container {
   display: flex;
-  flex-direction: row;  
-  width: 100vh;
-  height: 100%;
+  height: 90vh;
   padding: 10px;
-  overflow: auto;
+  min-width: 100%;
 }
 
-.animals_list, .map {
-  height: 80vh;
-}
+/* .animals_list, .map {
+  height: 100%;
+} */
+ 
 .animals_list {
-  flex: 2;
+  flex: 4;
 }
 .map {
-  flex: 5;
+  flex: 7;
 }
