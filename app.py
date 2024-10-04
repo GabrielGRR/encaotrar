@@ -1,6 +1,9 @@
 import sqlite3 as sql
 from flask import Flask, flash, redirect, render_template, g, request, jsonify, url_for 
 
+# https://github.com/heremaps/maps-api-for-javascript-examples
+# here maps api google search
+
 # Configure application
 app = Flask(__name__)
 
