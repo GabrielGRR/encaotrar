@@ -18,9 +18,9 @@ div {
 } */
  
 .animals_list {
-  flex: 3;
+  flex: 4;
 }
-.map {
+.map_panel {
   flex: 7;
 }
 
