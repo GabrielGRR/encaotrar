@@ -29,20 +29,23 @@
             <div class="left_panel ">
               <!--button switch perdidos e achados-->
               <div class="toggle_dogs">
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                  <button type="button" class="btn btn-outline-primary">Perdidos</button>
-                  <button type="button" class="btn btn-outline-primary">Encontrados</button>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" onclick="toggleCard('card1')">
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="btnradio1">Perdidos</label>
+                
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio3">Encontrados</label>
                 </div>
               </div>
               <div class="overflow-auto overflow-x-hidden animals_list">
               
-              <!--card-->
-              {% set x = namespace(counter=1) %}
+              <!--card dogs perdidos-->
+              {% set lost = namespace(counter=1) %}
               {% for y in range(5) %}
-              <div class="card mb-3" style="max-width: 540px;" animal="1">
+              <div class="card mb-3 lost show" style="max-width: 540px;" animal="1">
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img src="../static/images/img{{x.counter}}.jpg" class="card-img">
+                    <img src="../static/images/img{{lost.counter}}.jpg" class="card-img">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
@@ -53,8 +56,30 @@
                   </div>
                 </div>
               </div>
-              {% set x.counter = x.counter + 1 %}
+              {% set lost.counter = lost.counter + 1 %}
               {% endfor %}
+
+              <!--card dogs encontrados-->
+              <!--ficará oculto pelo javascript-->
+              {% set found = namespace(counter=1) %}
+              {% for x in range(5) %}
+              <div class="card mb-3 found hidden" style="max-width: 540px;" animal="1">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="../static/images/img{{found.counter}}.jpg" class="card-img">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h6 class="card-title">{{ lista_animais[x] }}</h6>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additio100%. T100% is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% set found.counter = found.counter + 1 %}
+              {% endfor %}
+
             </div>
           </div>
           

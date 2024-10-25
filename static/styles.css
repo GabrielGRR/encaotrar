@@ -19,6 +19,7 @@ div {
  
 .left_panel {
   flex: 4;
+  max-width: fit-content;
 }
 .map_panel {
   flex: 7;
@@ -47,6 +48,8 @@ img {
   align-items: center;
   
   justify-content: center;
+
+  width:100%;
 }
 .animals_list{
   height: 95%;
