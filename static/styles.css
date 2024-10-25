@@ -8,7 +8,7 @@ div {
 
 .container {
   display: flex;
-  height: 90vh;
+  max-height: 90vh;
   padding: 10px;
   min-width: 100%;
 }
@@ -17,7 +17,7 @@ div {
   height: 100%;
 } */
  
-.animals_list {
+.left_panel {
   flex: 4;
 }
 .map_panel {
@@ -32,4 +32,22 @@ img {
   width: 190px;
   height:170px;
   object-fit: cover;
+}
+
+.logo {
+  object-fit: contain;
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+}
+
+.toggle_dogs{
+  display: flex;
+
+  align-items: center;
+  
+  justify-content: center;
+}
+.animals_list{
+  height: 95%;
 }

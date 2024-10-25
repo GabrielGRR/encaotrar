@@ -13,33 +13,49 @@
 </head>
 <body>
     <header>
-        Encaotrar
+        <!-- Image and text -->
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="/">
+            <img src="../static/images/dog.svg" width="30" height="30" padding="10" class="d-inline-block align-top logo" alt="">
+            EnCAOtrar
+          </a>
+        </nav>
     </header>
     <main>
         <div class="container">
+          
           <!----------------------LEFT PANEL-->
-          <div class="animals_list overflow-auto overflow-x-hidden">
             
-            <!--card-->
-            {% set x = namespace(counter=1) %}
-            {% for y in range(5) %}
-            <div class="card mb-3" style="max-width: 540px;" animal="1">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="../static/images/img{{x.counter}}.jpg" class="card-img">
+            <div class="left_panel ">
+              <!--button switch perdidos e achados-->
+              <div class="toggle_dogs">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                  <button type="button" class="btn btn-outline-primary">Perdidos</button>
+                  <button type="button" class="btn btn-outline-primary">Encontrados</button>
                 </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h6 class="card-title">{{ lista_animais[y] }}</h6>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additio100%. T100% is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+              <div class="overflow-auto overflow-x-hidden animals_list">
+              
+              <!--card-->
+              {% set x = namespace(counter=1) %}
+              {% for y in range(5) %}
+              <div class="card mb-3" style="max-width: 540px;" animal="1">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="../static/images/img{{x.counter}}.jpg" class="card-img">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h6 class="card-title">{{ lista_animais[y] }}</h6>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additio100%. T100% is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
                   </div>
                 </div>
               </div>
+              {% set x.counter = x.counter + 1 %}
+              {% endfor %}
             </div>
-            {% set x.counter = x.counter + 1 %}
-            {% endfor %}
-
           </div>
           
           <!----------------------RIGHT PANEL (map)-->

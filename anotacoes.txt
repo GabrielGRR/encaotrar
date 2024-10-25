@@ -1,0 +1,5 @@
+[] add navbar
+[] add toggle
+[] add filtros (dropdown?)
+[] descobrir como o vercel ou netlify funcionam 
+[] melhorar a api
