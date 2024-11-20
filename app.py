@@ -4,16 +4,6 @@ import requests
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 
-##armazenar imagens no google drive aluno
-##olhar questão do flask_googlemaps
-##olhar se cosnigo fazer multiplos marcadores
-##TODO: olhar se não vou tomar multa de 200 reais da google, IMPORTANTE!!!
-
-# https://github.com/heremaps/maps-api-for-javascript-examples
-# here maps api google search
-
-### https://github.com/flask-extensions/Flask-GoogleMaps
-
 # Configure application
 app = Flask(__name__)
 
@@ -25,7 +15,6 @@ app.config['GOOGLEMAPS_KEY'] = api_key
 
 # Initialize the extension
 GoogleMaps(app)
-
 
 #Inicialização do index
 @app.route('/', methods=["POST","GET"])

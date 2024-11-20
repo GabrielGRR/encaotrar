@@ -2,3 +2,14 @@
 [x] add toggle
 [] descobrir como o vercel ou netlify funcionam 
 [] melhorar a api
+
+
+
+armazenar imagens no google drive aluno
+olhar questão do flask_googlemaps
+olhar se cosnigo fazer multiplos marcadores
+
+https://github.com/heremaps/maps-api-for-javascript-examples
+here maps api google search
+
+https://github.com/flask-extensions/Flask-GoogleMaps
