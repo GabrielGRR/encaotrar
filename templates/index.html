@@ -27,16 +27,6 @@
           <!----------------------LEFT PANEL-->
             
             <div class="left_panel ">
-              <!--button switch perdidos e achados-->
-              <div class="toggle_dogs">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" onclick="toggleCard('card1')">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-primary" for="btnradio1">Perdidos</label>
-                
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3">Encontrados</label>
-                </div>
-              </div>
               <div class="overflow-auto overflow-x-hidden animals_list">
               <script>
                 console.log("oi")
@@ -65,11 +55,25 @@
                       <p class="card-text">Tutor: {{ pet['dono'] }}</p>
                       <p class="card-text">Local: {{ pet['local'] }}</p>
                       <p class="card-text"><small class="text-muted">Data do desaparecimento: {{ pet['dataDes'] }}</small></p>
+                      <button onclick="myFunction('{{ pet['name'] }}')">Comentários</button>
+                      <div id="{{ pet['name'] }}" style="display: none;">
+                        <p class="card-text">{{ pet['comentario'] }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               {% endfor %}
+              <script>
+                function myFunction(id) {
+                  var x = document.getElementById(id);
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }
+                }
+                </script>
             </div>
           </div>
           
