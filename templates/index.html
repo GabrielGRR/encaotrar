@@ -27,70 +27,65 @@
           <!----------------------LEFT PANEL-->
             
             <div class="left_panel ">
-              <!--button switch perdidos e achados-->
-              <div class="toggle_dogs">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" onclick="toggleCard('card1')">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-primary" for="btnradio1">Perdidos</label>
-                
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3">Encontrados</label>
-                </div>
-              </div>
               <div class="overflow-auto overflow-x-hidden animals_list">
-              
+              <script>
+                console.log("oi")
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const location = urlParams.get('location')
+                console.log(location)
+                if(location != null){
+                  document.getElementById('mapa').src = loc;
+                }
+              </script>
               <!--card dogs perdidos-->
-              {% set lost = namespace(counter=1) %}
-              {% for y in range(5) %}
-              <div class="card mb-3 lost show" style="max-width: 540px;" animal="1">
+              {% for pet in lista_animais %}
+              {% set lat=pet['lat']['$numberDecimal']%}
+              {% set lng=pet['lng']['$numberDecimal']%}
+              <div class="card mb-3 lost show" style="max-width: 540px;" animal="1" >
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img src="../static/images/img{{lost.counter}}.jpg" class="card-img">
+                    <a href="http://127.0.0.1:5000/?location={{lat}},{{lng}}">
+                    <img src="{{ pet['imageUrl'] }}" class="card-img" onclick="teste()">
+                  </a>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h6 class="card-title">{{ lista_animais[y] }}</h6>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additio100%. T100% is a little bit longer.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      <h6 class="card-title">{{ pet['name'] }}</h6>
+                      <p class="card-text">Tutor: {{ pet['dono'] }}</p>
+                      <p class="card-text">Local: {{ pet['local'] }}</p>
+                      <p class="card-text"><small class="text-muted">Data do desaparecimento: {{ pet['dataDes'] }}</small></p>
+                      <button onclick="myFunction('{{ pet['name'] }}')">Comentários</button>
+                      <div id="{{ pet['name'] }}" style="display: none;">
+                        <p class="card-text">{{ pet['comentario'] }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              {% set lost.counter = lost.counter + 1 %}
               {% endfor %}
-
-              <!--card dogs encontrados-->
-              <!--ficará oculto pelo javascript-->
-              {% set found = namespace(counter=1) %}
-              {% for x in range(5) %}
-              <div class="card mb-3 found hidden" style="max-width: 540px;" animal="1">
-                <div class="row no-gutters">
-                  <div class="col-md-4">
-                    <img src="../static/images/img{{found.counter}}.jpg" class="card-img">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h6 class="card-title">{{ lista_animais[x] }}</h6>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additio100%. T100% is a little bit longer.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% set found.counter = found.counter + 1 %}
-              {% endfor %}
-
+              <script>
+                function myFunction(id) {
+                  var x = document.getElementById(id);
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }
+                }
+                </script>
             </div>
           </div>
           
           <!----------------------RIGHT PANEL (map)-->
           <div class="map_panel">
             <iframe
+                id="mapa"
                 width="450"
                 height="250"
                 frameborder="0" style="border:0; width:100%; height: 100%"
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed/v1/place?key={{ api_key }}&q=Brasil, UNA aimorés"
+                src="https://www.google.com/maps/embed/v1/place?key={{ api_key }}&q={{ location }}"
                 allowfullscreen>
             </iframe>
           </div>
